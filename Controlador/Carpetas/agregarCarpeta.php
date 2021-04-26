@@ -15,9 +15,15 @@
     $respuesta = $Carpeta->agregarCarpeta($datos);
 
     if($respuesta != 0){
+        $carpetaArchivos = '../../Archivos';
         $carpetaUsuario = '../../Archivos/'.$idUsuario; 
         $NombreCarpeta = '../../Archivos/'.$idUsuario.'/'.$respuesta;
         $carpetaImgVideos = '../../Archivos/'.$idUsuario.'/'.$respuesta.'/'."imgVideo";
+        
+        if(!file_exists($carpetaArchivos )){
+            mkdir($carpetaArchivos, 0777,true);
+        }
+        
         if(!file_exists($carpetaUsuario )){
             mkdir($carpetaUsuario, 0777,true);
         }

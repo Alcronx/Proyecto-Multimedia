@@ -7,7 +7,7 @@ function logear() {
         success: function (respuesta) {
             respuesta = respuesta.trim();
             if (respuesta == 1) {
-                window.location = "Vistas/VistaEspecifica/inicio.php";
+                window.location = "Vistas/VistaEspecifica/carpetas.php";
             } else {
                 Swal.fire("Error", "Eliga el Usuario Indicado", "error");
 

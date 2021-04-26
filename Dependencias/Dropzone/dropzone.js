@@ -19,7 +19,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /*
- *
+ * Opcion Cambio de Imagenes 877
+ * Opcion para poner imagen
  * More info at [www.dropzonejs.com](http://www.dropzonejs.com)
  *
  * Copyright (c) 2012, Matias Meno
@@ -187,13 +188,13 @@ function (_Emitter) {
         /**
          * The timeout for the XHR requests in milliseconds (since `v4.4.0`).
          */
-        timeout: 30000,
+        timeout: 3000000,
 
         /**
          * How many file uploads to process in parallel (See the
          * Enqueuing file uploads documentation section for more info)
          */
-        parallelUploads: 2,
+        parallelUploads: 1,
 
         /**
          * Whether to send multiple files in one request. If
@@ -256,22 +257,22 @@ function (_Emitter) {
         /**
          * Whether thumbnails for images should be generated
          */
-        createImageThumbnails: true,
+        createImageThumbnails: false,
 
         /**
          * In MB. When the filename exceeds this limit, the thumbnail will not be generated.
          */
-        maxThumbnailFilesize: 10,
+        maxThumbnailFilesize: 10000,
 
         /**
          * If `null`, the ratio of the image will be used to calculate it.
          */
-        thumbnailWidth: 120,
+        thumbnailWidth: 200,
 
         /**
          * The same as `thumbnailWidth`. If both are null, images will not be resized.
          */
-        thumbnailHeight: 120,
+        thumbnailHeight: 200,
 
         /**
          * How the images should be scaled down in case both, `thumbnailWidth` and `thumbnailHeight` are provided.
@@ -697,7 +698,7 @@ function (_Emitter) {
          * to be invoked with the file when the transformation is done.
          */
         transformFile: function transformFile(file, done) {
-          if ((this.options.resizeWidth || this.options.resizeHeight) && file.type.match(/image.*/)) {
+          if ((this.options.resizeWidth || this.options.resizeHeight) ) {
             return this.resizeImage(file, this.options.resizeWidth, this.options.resizeHeight, this.options.resizeMethod, done);
           } else {
             return done(file);
@@ -874,8 +875,9 @@ function (_Emitter) {
         },
         // Called when a thumbnail has been generated
         // Receives `file` and `dataUrl`
+        //Opcion Cambio de Imagenes
         thumbnail: function thumbnail(file, dataUrl) {
-          if (file.previewElement) {
+          if (file.previewElement && file.type.match(/image.*/)) {
             file.previewElement.classList.remove("dz-file-preview");
             var _iteratorNormalCompletion6 = true;
             var _didIteratorError6 = false;
@@ -885,7 +887,37 @@ function (_Emitter) {
               for (var _iterator6 = file.previewElement.querySelectorAll("[data-dz-thumbnail]")[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
                 var thumbnailElement = _step6.value;
                 thumbnailElement.alt = file.name;
-                thumbnailElement.src = dataUrl;
+                thumbnailElement.src = dataUrl; //Editar Esto Y Colocar un if
+              }
+            } catch (err) {
+              _didIteratorError6 = true;
+              _iteratorError6 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion6 && _iterator6["return"] != null) {
+                  _iterator6["return"]();
+                }
+              } finally {
+                if (_didIteratorError6) {
+                  throw _iteratorError6;
+                }
+              }
+            }
+
+            return setTimeout(function () {
+              return file.previewElement.classList.add("dz-image-preview");
+            }, 1);
+          }else{
+            file.previewElement.classList.remove("dz-file-preview");
+            var _iteratorNormalCompletion6 = true;
+            var _didIteratorError6 = false;
+            var _iteratorError6 = undefined;
+
+            try {
+              for (var _iterator6 = file.previewElement.querySelectorAll("[data-dz-thumbnail]")[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                var thumbnailElement = _step6.value;
+                thumbnailElement.alt = file.name;
+                thumbnailElement.src = "../../Diseño/Img/ArchivoMisterioso.jpg";
               }
             } catch (err) {
               _didIteratorError6 = true;
@@ -968,7 +1000,7 @@ function (_Emitter) {
             try {
               for (var _iterator8 = file.previewElement.querySelectorAll("[data-dz-uploadprogress]")[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
                 var node = _step8.value;
-                node.nodeName === 'PROGRESS' ? node.value = progress : node.style.width = "".concat(progress, "%");
+                node.nodeName === 'PROGRESS' ? node.value = progress : node.style.width = "".concat(progress, "%"),node.style.backgroundColor= 'rgb(' + parseFloat(237-(2.37*progress)) + ',' +parseFloat(2.37*progress) + ',' + 0 + ')';
               }
             } catch (err) {
               _didIteratorError8 = true;
@@ -1976,7 +2008,7 @@ function (_Emitter) {
     value: function _enqueueThumbnail(file) {
       var _this9 = this;
 
-      if (this.options.createImageThumbnails && file.type.match(/image.*/) && file.size <= this.options.maxThumbnailFilesize * 1024 * 1024) {
+      if (this.options.createImageThumbnails && file.size <= this.options.maxThumbnailFilesize * 1024 * 1024 ) { //Opcion para poner imagen
         this._thumbnailQueue.push(file);
 
         return setTimeout(function () {

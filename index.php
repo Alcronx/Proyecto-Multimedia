@@ -5,7 +5,7 @@ session_start();
 unset($_SESSION["nombreCarpeta"]);
 unset($_SESSION["idCarpeta"]); 
 if(isset($_SESSION["nombreUsuario"])) {
-    header("location: Vistas/VistaEspecifica/inicio.php");
+    header("location: Vistas/VistaEspecifica/carpetas.php");
 }
 ?>
 
