@@ -1,0 +1,67 @@
+.modal-personalizado{
+    width: 80%;
+}
+
+.Botoncerrar{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+    right: 5px;
+    top: 5px;
+    z-index: 10;
+    -moz-transition: all 0.5s ;
+    -o-transition: all 0.5s ;
+    -webkit-transition: all 0.5s ;
+    transition: all 0.5s ;
+    text-align: center;
+}
+
+.Botoncerrar:hover{
+    background-color: #d51862;
+    font-size: 19px; 
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    border-radius: 25%;
+}
+
+.modal-personalizado{
+    position: relative;
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+
+.modal-body-personalizado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-Interior-Body{
+    position: relative;
+    width: 98%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+}
+
+.bordePrevisualizacion{
+    -webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.75);
+}
+
+.videoPrevisualizacion{
+    max-width: 850px;
+    width: 100%;
+    height: auto;
+}
+
+

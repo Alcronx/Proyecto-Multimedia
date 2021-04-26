@@ -1,0 +1,169 @@
+.grid{
+    padding-top: 30px;
+}
+
+.colorIcono{
+    color: rgb(101, 131, 214);
+}
+
+.colorTextoCarpeta{
+    color: rgb(39, 39, 39);
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.2) ; /* IE 9 */
+    -webkit-transform: scale(1.2) ; /* Safari 3-8 */
+    transform: scale(1.2) ; 
+    animation-duration: 3s;
+  }
+
+ 
+.zoom {
+  transition: transform .2s;
+}
+
+.botonCarpeta{
+    padding-right: 5px;
+    padding-right: 5px;
+}
+
+/* Grid Archivos **************************************************/
+
+.divArchivo{
+    width: 95%;
+    padding-bottom : 95%;
+    background-color: #dedede;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.borde{
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    border: 0px solid #000000;
+}
+
+
+.Contenedor-superior{
+    width: 85%;
+    padding-bottom : 85%;
+    background-color: #a71717;
+    position: absolute;
+    top: 2%;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+}
+
+.Contenedor-inferior{
+    width: 70%;
+    height: 10%;
+    position: absolute;
+    bottom: 0.5%;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 100%;
+    font-weight: 700;
+    white-space: nowrap; 
+}
+
+
+.Contenedor-botones{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(194, 194, 196, 0.507);
+    transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+
+    
+
+.Contenedor-superior:hover > .Contenedor-botones {
+    opacity: 1;
+    visibility: visible;
+}
+
+.Contenedor-multimedia{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    background-color: rgba(135, 207, 235, 0.397);
+    overflow: hidden;
+}
+
+.multimedia{
+    position: absolute;
+    max-width: 250%;
+    max-height: 250%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.video{
+    height: 100%;
+}
+
+.ArchivosIconos{
+    height: 100%;
+    width: 100%;
+}
+
+.ContenedorBotonesArriba{
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    top:0;
+}
+
+.ContenedorBotonesAbajo{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    bottom:0;
+}
+
+.Contenedor-botones button{
+    position: relative;
+    border-radius: 50%;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    width: 30%;
+    height: 60%;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
