@@ -43,7 +43,7 @@ if (isset($NombeUsuario)) {
                                 <i class="fas fa-cloud-upload-alt"></i>
                             </div>
                             <h2 class="nota">Deja Tus Archivos Aqui<h2>
-                            <span class="note">No hay archivos seleccionados</span>
+                                    <span class="note">No hay archivos seleccionados</span>
                         </div>
                         <div class="fallback">
                             <input type="file" name="file" multiple="">
@@ -94,8 +94,9 @@ if (isset($NombeUsuario)) {
             </div>
         </div>
     </div>
+    <!-- Modal EditarArchivo -->
 
-    <!-- Modal Previsualizacions-->
+    <!-- Modal Previsualizaciones-->
     <div class="modal" id="modalPrevisualizacion">
         <div class="modal-personalizado">
             <div class="modal-content">
@@ -113,8 +114,7 @@ if (isset($NombeUsuario)) {
         </div>
     </div>
 
-
-
+    <!-- Modal Previsualizaciones-->
 
 
     <!-- Vista en comun fotter, termina en </body> </html> -->

@@ -95,10 +95,11 @@ function editarArchivo() {
 
 }
 
-function Previsualizacion(extensionArchivo,rutaArchivo,nombreArchivo){
+function Previsualizacion(extensionArchivo,rutaArchivo,nombreArchivo,idBotonPreview){
+    //Funcion para Cargar Preview de Video, se dirige a cargarPreview.php
     $.ajax({
         type: "POST",
-        data: {'extensionArchivo':extensionArchivo,'rutaArchivo':rutaArchivo,'nombreArchivo':nombreArchivo},
+        data: {'extensionArchivo':extensionArchivo,'rutaArchivo':rutaArchivo,'nombreArchivo':nombreArchivo,'idBotonPreview':idBotonPreview},
         url: "../../Controlador/Archivos/cargarPreview.php",
         success: function (respuesta) {
            $('#contenedor-Interior-Body').html(respuesta);
@@ -106,8 +107,20 @@ function Previsualizacion(extensionArchivo,rutaArchivo,nombreArchivo){
     });
 }
 
+function btnAnterior(btnAnterior){
+    $('#modalPrevisualizacion').modal('hide');
+    document.getElementById(btnAnterior).click();
+}
+
+function btnSiguente(btnSiguente){
+    $('#modalPrevisualizacion').modal('hide');
+    document.getElementById(btnSiguente).click();
+}
+
+
 $('#modalPrevisualizacion').on('hidden.bs.modal', function (e) {
     $('#contenedor-Interior-Body').html("");
   })
+
 
 

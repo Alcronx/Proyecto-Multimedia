@@ -121,6 +121,12 @@
 .ArchivosIconos{
     height: 100%;
     width: 100%;
+    
+}
+
+.ArchivosIconosPreview{
+    max-height: 70%;
+    max-width: 70%;
 }
 
 .ContenedorBotonesArriba{

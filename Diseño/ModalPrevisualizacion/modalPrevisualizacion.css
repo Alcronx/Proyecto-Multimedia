@@ -41,8 +41,9 @@
 }
 
 .contenedor-Interior-Body{
+    z-index: 2;
     position: relative;
-    width: 98%;
+    width: 100%;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -64,4 +65,49 @@
     height: auto;
 }
 
+.btnFlechas{
+    margin: 10px 10px 5px 10px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 30%;
+    padding: 15px 25px 15px 25px;
+    color: white;
+    position: absolute;
+}
 
+.btn-izq{
+   left: 0;
+}
+
+.btn-der{
+    right: 0;
+}
+
+.textoPreview{
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 100%;
+    font-weight: 700;
+    white-space: nowrap;
+    position: absolute;
+    top: 20px;
+    width: 70%;
+}
+
+
+.btnFlechas:hover {background-color: #74b476}
+
+@media (max-width: 1146px) {
+
+    .btn-izq{
+        bottom: 0;
+        left: 10px;
+    }
+     
+    .btn-der{
+        bottom: 0;
+        right: 10px;
+    }
+    
+}

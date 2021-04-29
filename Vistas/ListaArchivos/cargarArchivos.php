@@ -23,15 +23,16 @@ $sql = "Select 		archivo.idArchivo as idArchivo,
                             where carpeta.idUsuario= '$idUsuario' and carpeta.idCarpeta= '$idCarpeta'
                             order by archivo.nombre asc;";
 
-$result = mysqli_query($conexion, $sql);
-
+$result = mysqli_query($conexion, $sql); $i = 1;
+$numeroFilas = mysqli_num_rows($result); 
 while ($mostrar = mysqli_fetch_array($result)) { //Inicio while
     $nombreArchivo = $mostrar['nombreArchivo'];
     $extensionArchivo = $mostrar['extensionArchivo'];
     $rutaArchivo = $mostrar['rutaArchivo'];
     $idArchivo = $mostrar['idArchivo'];
     $rutaImgVideo = $mostrar['rutaImgVideo'];
-    $extensionesPrevisualizacion = array(".mp4", ".ogg", ".webm");
+    $idBotonPreview = "BotonPreview"."-".$i."-".$numeroFilas; //Se crea la id del boton con su numero y limite de filas, para hacer boton preview
+    $i++;   
     ?>
 
 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mb-3 d-flex justify-content-center">
@@ -45,16 +46,12 @@ while ($mostrar = mysqli_fetch_array($result)) { //Inicio while
             <!--Botones-->
             <div class="Contenedor-botones d-flex jusify-content-center">
                 <div class="ContenedorBotonesArriba d-flex justify-content-around align-items-center flex-nowrap">
-                    <?php //****************************************php****************************************
-    if (in_array($extensionArchivo, $extensionesPrevisualizacion)) {
-        ?>
-
-                    <button type="button" class="btn btn-primary fas fa-eye" onclick="Previsualizacion('<?php echo $extensionArchivo ?>','<?php echo $rutaArchivo ?>','<?php $nombreArchivo?>')"
+                    <!-- Archivo.js -->
+                    <button type="button" id="<?php echo $idBotonPreview?>" class="btn btn-primary fas fa-eye"
+                        onclick="Previsualizacion('<?php echo $extensionArchivo ?>','<?php echo $rutaArchivo ?>','<?php echo $nombreArchivo ?>','<?php echo $idBotonPreview ?>')"
                         data-toggle="modal" data-target="#modalPrevisualizacion">
                     </button>
 
-                    <?php //****************************************php****************************************
-    }?>
                     <button type="button" class="btn btn-success fas fa-download"
                         onclick="descargarArchivo('<?php echo $rutaArchivo ?>','<?php echo $nombreArchivo ?>','<?php echo $extensionArchivo ?>')">
                     </button>
@@ -81,6 +78,9 @@ while ($mostrar = mysqli_fetch_array($result)) { //Inicio while
 <?php
 } //Fin While
 ?>
+
+
+ 
 
 
 
