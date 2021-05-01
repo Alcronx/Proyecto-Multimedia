@@ -1,23 +1,24 @@
 <?php
-
+//****************************Inicio datos Post****************************
 $extension = $_POST['extensionArchivo'];
 $ruta = $_POST['rutaArchivo'];
 $nombreArchivo = $_POST['nombreArchivo'];
 $rutaIconos = "../../Diseño/Img/Archivo";
 $tipo = str_replace(".", "", $extension);
 $idBotonPreview = $_POST['idBotonPreview'];
-
 //0-NombreBoton,1-BotonActual,2-NumeroArchivos
-$arrayBotones = explode("-",$idBotonPreview);
-$nombreBoton = $arrayBotones[0] ;
-$botonActual = $arrayBotones[1] ;
+$arrayBotones = explode("-", $idBotonPreview);
+$nombreBoton = $arrayBotones[0];
+$botonActual = $arrayBotones[1];
 $numeroArchivos = $arrayBotones[2];
-
-$BotonSiguente = $botonActual == $numeroArchivos ? $nombreBoton."-1-".$numeroArchivos : $nombreBoton."-".(int)($botonActual+1)."-".$numeroArchivos; 
-$BotonAnterior = $botonActual == 1 ? $nombreBoton."-".$numeroArchivos."-".$numeroArchivos : $nombreBoton."-".(int)($botonActual-1)."-".$numeroArchivos; 
-
-$BtnSiguente = '<button type="button"  class="btnFlechas btn-izq fas fa-arrow-circle-left" onclick="btnAnterior('."'".$BotonAnterior."'".')"> </button>';
-$BotonAnterior = '<button type="button"  class="btnFlechas btn-der fas fa-arrow-circle-right" onclick="btnSiguente('."'".$BotonSiguente."'".')"> </button>';
+//****************************FIn datos Post****************************
+$idSiguente = $botonActual == $numeroArchivos ? $nombreBoton . "-1-" . $numeroArchivos : $nombreBoton . "-" . (int) ($botonActual + 1) . "-" . $numeroArchivos;
+$idAnterior = $botonActual == 1 ? $nombreBoton . "-" . $numeroArchivos . "-" . $numeroArchivos : $nombreBoton . "-" . (int) ($botonActual - 1) . "-" . $numeroArchivos;
+$BtnSiguente = '<button type="button"  class="btnFlechas btn-izq fas fa-arrow-circle-left" onclick="btnAnterior(' . "'" . $idAnterior . "'" . ')"> </button>';
+$BotonAnterior = '<button type="button"  class="btnFlechas btn-der fas fa-arrow-circle-right" onclick="btnSiguente(' . "'" . $idSiguente . "'" . ')"> </button>';
+$TextoSuperior = '<div class="textoPreview">' . $nombreArchivo . '</div>';
+$contenidoPreview = $BtnSiguente . $BotonAnterior . $TextoSuperior;
+$etiquetaMultimedia = "";
 $PNG = ".png";
 
 try {
@@ -26,31 +27,48 @@ try {
         case '.mp4':
         case '.ogg':
         case '.webm':
-            echo    
-                    '<div class="textoPreview">'.$nombreArchivo.'</div>'.
-                    $BtnSiguente.
-                    '<video class="bordePrevisualizacion videoPrevisualizacion" controls>
-                            <source src="' . $ruta . '" type="video/' . $tipo . '">
-                            Tu buscador no soporta este formato de video
-                    </video>'
-                    .$BotonAnterior;
+            $etiquetaMultimedia = '<video class="bordePrevisualizacion videoPrevisualizacion" autoplay controls> <source src="' . $ruta . '" type="video/' . $tipo . '">
+                                            Tu buscador no soporta este formato de video
+                                            </video>';
+            break;
+        case '.png':
+        case '.jpg':
+        case '.jpeg':
+            $etiquetaMultimedia = '<img class="bordePrevisualizacion imgPreview" src="' . $ruta . '" alt="' . $nombreArchivo . '">';
+            break;
+        case '.pdf':
+            $etiquetaMultimedia = '<iframe src="' . $ruta . '#view=Fit" style="width:80%; height:600px;" frameborder="0"></iframe>';
+            break;
+        case '.mp3':
+            $etiquetaMultimedia = ' <div class="AudioContainer"> <audio controls src="' . $ruta . '">
+                                        Tu Buscador No Soporta Este formato
+                                    </audio></div>';
+            break;
+        case '.exe':
+            $etiquetaMultimedia = '<img class="ArchivosIconos" src="' . $rutaIconos . "EXE" . $PNG . '" alt="' . $nombreArchivo . '">';
+            break;
+        case '.gif':
+            $etiquetaMultimedia = '<img class="ArchivosIconos" src="' . $rutaIconos . "GIF" . $PNG . '" alt="' . $nombreArchivo . '">';
+            break;
+        case '.html':
+            $etiquetaMultimedia = '<img class="ArchivosIconos" src="' . $rutaIconos . "HTML" . $PNG . '" alt="' . $nombreArchivo . '">';
+            break;
+        case '.js':
+            $etiquetaMultimedia = '<img class="ArchivosIconos" src="' . $rutaIconos . "JS" . $PNG . '" alt="' . $nombreArchivo . '">';
+            break;
+        case '.rar':
+            $etiquetaMultimedia = '<img class="ArchivosIconos" src="' . $rutaIconos . "RAR" . $PNG . '" alt="' . $nombreArchivo . '">';
+            break;
+        case '.txt':
+            $etiquetaMultimedia = '<img class="ArchivosIconos" src="' . $rutaIconos . "TXT" . $PNG . '" alt="' . $nombreArchivo . '">';
             break;
         default:
-            echo '<img class="ArchivosIconosPreview" src="' . $rutaIconos . "Misterioso" . $PNG . '" alt="' . $nombreArchivo . '">'.Botones($BotonSiguente , $BotonAnterior);
+            $etiquetaMultimedia = '<img class="bordePrevisualizacion ArchivosIconosPreview" src="' . $rutaIconos . "Misterioso" . $PNG . '" alt="' . $nombreArchivo . '">';
             break;
     }
+
+    echo $contenidoPreview . $etiquetaMultimedia;
 
 } catch (Exeption $e) {
     echo 0;
 }
-
-
-
-
-
-
-
-
-
-    
-
