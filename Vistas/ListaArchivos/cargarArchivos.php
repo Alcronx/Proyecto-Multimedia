@@ -20,8 +20,8 @@ $sql = "Select 		archivo.idArchivo as idArchivo,
                             inner join t_carpeta as carpeta
                             on carpeta.idCarpeta = archivo.idCarpeta
 
-                            where carpeta.idUsuario= '$idUsuario' and carpeta.idCarpeta= '$idCarpeta'
-                            order by archivo.nombre asc;";
+                            where carpeta.idUsuario= '$idUsuario' and carpeta.idCarpeta= '$idCarpeta'                
+                            order by LENGTH(archivo.nombre),archivo.nombre asc;";
 
 $result = mysqli_query($conexion, $sql); $i = 1;
 $numeroFilas = mysqli_num_rows($result); 

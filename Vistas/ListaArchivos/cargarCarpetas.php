@@ -5,7 +5,7 @@
     $conexion = new Conexion();
     $conexion = $conexion->conexion();
 
-                     $sql = "Select idCarpeta,nombre from t_carpeta where idUsuario = '$idUsuario'";
+                     $sql = "Select idCarpeta,nombre from t_carpeta where idUsuario = '$idUsuario' order by LENGTH(nombre),nombre asc;";
                      $result = mysqli_query($conexion,$sql);
 
                      while ($mostrar = mysqli_fetch_array($result)){
