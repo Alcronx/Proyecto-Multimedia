@@ -38,7 +38,7 @@ if ($respuesta != 0) {
     $rutaGuardar = $rutaArchivo . '/' . $respuesta . $tipoArchivo;
     move_uploaded_file($_FILES["file"]["tmp_name"], $rutaGuardar);  
     
-    if ($_FILES["file"]["type"] == "video/mp4"){
+    if ($_FILES["file"]["type"] == "video/mp4"||$_FILES["file"]["type"] == "video/x-matroska"){
         VistaPreviaVideo($idUsuario,$idCarpeta,$rutaGuardar,$respuesta,$videoImgExtension);
     }
 
@@ -73,7 +73,7 @@ function rutaImgVideo($rutaArchivo)
 {
     
     $carpetaImgVideos = "imgVideo";
-    if ($_FILES["file"]["type"] == "video/mp4") {
+    if ($_FILES["file"]["type"] == "video/mp4"||$_FILES["file"]["type"] == "video/x-matroska") {
         return $rutaArchivo . "/".$carpetaImgVideos."/";
     } else {
         return "";

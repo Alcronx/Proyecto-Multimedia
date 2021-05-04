@@ -4,7 +4,7 @@ $extension = $_POST['extensionArchivo'];
 $ruta = $_POST['rutaArchivo'];
 $nombreArchivo = $_POST['nombreArchivo'];
 $rutaIconos = "../../Diseño/Img/Archivo";
-$tipo = str_replace(".", "", $extension);
+$tipo = str_replace(".", "", $extension)=="mkv" ? "mp4" :  str_replace(".", "", $extension);
 $idBotonPreview = $_POST['idBotonPreview'];
 //0-NombreBoton,1-BotonActual,2-NumeroArchivos
 $arrayBotones = explode("-", $idBotonPreview);
@@ -27,6 +27,7 @@ try {
         case '.mp4':
         case '.ogg':
         case '.webm':
+        case '.mkv':
             $etiquetaMultimedia = '<video class="bordePrevisualizacion videoPrevisualizacion" autoplay controls> <source src="' . $ruta . '" type="video/' . $tipo . '">
                                             Tu buscador no soporta este formato de video
                                             </video>';

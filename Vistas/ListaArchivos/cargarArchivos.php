@@ -135,6 +135,7 @@ function cargarArchivos($extensionArchivo, $rutaArchivo, $nombreArchivo, $rutaIm
         case '.mp4':
         case '.ogg':
         case '.webm':
+        case '.mkv':
             return '<img class="video" src="' . $rutaImgVideo . '" alt="' . $nombreArchivo . '">';
             break;
         default:
