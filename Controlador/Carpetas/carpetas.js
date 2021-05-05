@@ -96,35 +96,41 @@ function EliminarCarpeta(idCarpetaP, nombreCarpetaP) {
         //***************************************************************** */
         Swal.fire({
             title: '¿Esta seguro de eliminar Carpeta?',
-            text: "Una vez eliminada no podra recuperarla y se perderan todos los arhivos",
+            html: 'Escriba: <strong>' + nombreCarpetaP + '</strong> para eliminar',
             icon: 'warning',
+            input: 'text',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Aceptar',
             cancelButtonText: 'Cancelar'
         }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    type: "POST",
-                    data: {'idCarpeta':idCarpetaP, 'nombreCarpeta':nombreCarpetaP},
-                    url: "../../Controlador/Carpetas/eliminarCarpeta.php",
-                    success: function (respuesta) { 
-                        console.log(respuesta);                    
-                        respuesta = respuesta.trim();
 
-                        if (respuesta == 1) {
-                            $('#listadoCarpetas').load("../ListaArchivos/cargarCarpetas.php");
-                            Swal.fire(
-                                'Eliminado',
-                                'Carpeta y Archivos Eliminados Con Exito',
-                                'success'
-                            );
-                        } else {
-                            Swal.fire("Error", "Ah ocurrido un error", "error");
+            if (result.value == nombreCarpetaP) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        data: { 'idCarpeta': idCarpetaP, 'nombreCarpeta': nombreCarpetaP },
+                        url: "../../Controlador/Carpetas/eliminarCarpeta.php",
+                        success: function (respuesta) {
+                            console.log(respuesta);
+                            respuesta = respuesta.trim();
+
+                            if (respuesta == 1) {
+                                $('#listadoCarpetas').load("../ListaArchivos/cargarCarpetas.php");
+                                Swal.fire(
+                                    'Eliminado',
+                                    'Carpeta y Archivos Eliminados Con Exito',
+                                    'success'
+                                );
+                            } else {
+                                Swal.fire("Error", "Ah ocurrido un error", "error");
+                            }
                         }
-                    }  
-                });
+                    });
+                }
+            } else {
+                Swal.fire("Error", "El nombre no es correcto", "error");
             }
         })
         //***************************************************************** */
@@ -133,7 +139,7 @@ function EliminarCarpeta(idCarpetaP, nombreCarpetaP) {
 
 }
 
-function clickCarpeta(idCarpetaP, nombreCarpetaP, idUsuarioP){
+function clickCarpeta(idCarpetaP, nombreCarpetaP, idUsuarioP) {
     if (idCarpetaP == "" || nombreCarpetaP == "" || idUsuarioP == "") {
         Swal.fire("Error", "Ha ocurrido un error intentelo denuevo", "error");
         return false;
@@ -142,16 +148,16 @@ function clickCarpeta(idCarpetaP, nombreCarpetaP, idUsuarioP){
 
         $.ajax({
             type: "POST",
-            data: {'idCarpeta':idCarpetaP, 'nombreCarpeta':nombreCarpetaP, 'idUsuario':idUsuarioP},
+            data: { 'idCarpeta': idCarpetaP, 'nombreCarpeta': nombreCarpetaP, 'idUsuario': idUsuarioP },
             url: "../../Controlador/Carpetas/clickCarpeta.php",
-            success: function (respuesta) {               
+            success: function (respuesta) {
                 respuesta = respuesta.trim();
                 if (respuesta == 1) {
                     window.location = "archivos.php";
                 } else {
                     Swal.fire("Error", "Ah ocurrido un error", "error");
                 }
-            }  
+            }
         });
 
     }
