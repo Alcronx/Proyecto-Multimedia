@@ -129,7 +129,7 @@ function EliminarCarpeta(idCarpetaP, nombreCarpetaP) {
                         }
                     });
                 }
-            } else {
+            } else if (result.isConfirmed){
                 Swal.fire("Error", "El nombre no es correcto", "error");
             }
         })
