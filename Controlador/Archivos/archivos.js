@@ -128,11 +128,11 @@ $('#modalPrevisualizacion').on('hidden.bs.modal', function (e) {
 window.addEventListener("keydown", detectorDeTeclas, false);
 
 function detectorDeTeclas(key){
-    var wea = $('#modalPrevisualizacion').hasClass('show'); 
-    if(key.keyCode=="37" && wea){
+    var modal = $('#modalPrevisualizacion').hasClass('show'); 
+    if(key.keyCode=="39" && modal){
         document.getElementById("BtnAnterior").click();
     }
-    if(key.keyCode=="39" && wea){
+    if(key.keyCode=="37" && modal){
         document.getElementById("BtnSiguente").click();
     }
 }
