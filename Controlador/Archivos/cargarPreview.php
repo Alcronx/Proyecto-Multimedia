@@ -14,8 +14,8 @@ $numeroArchivos = $arrayBotones[2];
 //****************************FIn datos Post****************************
 $idSiguente = $botonActual == $numeroArchivos ? $nombreBoton . "-1-" . $numeroArchivos : $nombreBoton . "-" . (int) ($botonActual + 1) . "-" . $numeroArchivos;
 $idAnterior = $botonActual == 1 ? $nombreBoton . "-" . $numeroArchivos . "-" . $numeroArchivos : $nombreBoton . "-" . (int) ($botonActual - 1) . "-" . $numeroArchivos;
-$BtnSiguente = '<button type="button"  class="btnFlechas btn-izq fas fa-arrow-circle-left" onclick="btnAnterior(' . "'" . $idAnterior . "'" . ')"> </button>';
-$BotonAnterior = '<button type="button"  class="btnFlechas btn-der fas fa-arrow-circle-right" onclick="btnSiguente(' . "'" . $idSiguente . "'" . ')"> </button>';
+$BtnSiguente = '<button id="BtnSiguente" type="button"  class="btnFlechas btn-izq fas fa-arrow-circle-left" onclick="btnAnterior(' . "'" . $idAnterior . "'" . ')"> </button>';
+$BotonAnterior = '<button id="BtnAnterior" type="button"  class="btnFlechas btn-der fas fa-arrow-circle-right" onclick="btnSiguente(' . "'" . $idSiguente . "'" . ')"> </button>';
 $TextoSuperior = '<div class="textoPreview">' . $nombreArchivo . '</div>';
 $contenidoPreview = $BtnSiguente . $BotonAnterior . $TextoSuperior;
 $etiquetaMultimedia = "";

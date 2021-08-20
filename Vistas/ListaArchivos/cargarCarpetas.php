@@ -7,15 +7,17 @@
 
                      $sql = "Select idCarpeta,nombre from t_carpeta where idUsuario = '$idUsuario' order by LENGTH(nombre),nombre asc;";
                      $result = mysqli_query($conexion,$sql);
-
+                     $contador = 0;
                      while ($mostrar = mysqli_fetch_array($result)){
                          $idCarpeta= $mostrar['idCarpeta'];
                          $nombreCarpeta = $mostrar['nombre'];
+                         $contador = $contador+1;
+                         
 ?>
 
 <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2 mb-3">
     <div class="row d-flex justify-content-center text-center">
-        <a id="linkArchivos" onclick="clickCarpeta('<?php echo $idCarpeta?>','<?php echo $nombreCarpeta?>','<?php echo $idUsuario?>')">
+        <a id="<?php echo $nombreCarpeta.$contador ?>" onclick="clickCarpeta('<?php echo $idCarpeta?>','<?php echo $nombreCarpeta?>','<?php echo $idUsuario?>')">
             <i class="fas fa-folder fa-10x colorIcono zoom"></i>
             <div>
                 <h5 class="colorTextoCarpeta"><?php echo $nombreCarpeta ?></h5>

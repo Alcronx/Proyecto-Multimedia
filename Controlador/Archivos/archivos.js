@@ -123,5 +123,20 @@ $('#modalPrevisualizacion').on('hidden.bs.modal', function (e) {
   })
 
 
+//EventoParaPresionar Teclas
+
+window.addEventListener("keydown", detectorDeTeclas, false);
+
+function detectorDeTeclas(key){
+    var wea = $('#modalPrevisualizacion').hasClass('show'); 
+    if(key.keyCode=="37" && wea){
+        document.getElementById("BtnAnterior").click();
+    }
+    if(key.keyCode=="39" && wea){
+        document.getElementById("BtnSiguente").click();
+    }
+}
+
+
 
 
