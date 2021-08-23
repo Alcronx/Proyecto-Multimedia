@@ -52,16 +52,16 @@ while ($mostrar = mysqli_fetch_array($result)) { //Inicio while
                         data-toggle="modal" data-target="#modalPrevisualizacion">
                     </button>
 
-                    <button type="button" class="btn btn-success fas fa-download"
+                    <button type="button" id="Descarga-<?php echo $nombreArchivo?>" class="btn btn-success fas fa-download"
                         onclick="descargarArchivo('<?php echo $rutaArchivo ?>','<?php echo $nombreArchivo ?>','<?php echo $extensionArchivo ?>')">
                     </button>
                 </div>
                 <div class="ContenedorBotonesAbajo d-flex justify-content-around align-items-center flex-nowrap">
-                    <button type="button" class="btn btn-warning fas fa-edit"
+                    <button type="button" id="Editar-<?php echo $nombreArchivo?>" class="btn btn-warning fas fa-edit"
                         onclick="obtenerDatosArchivo('<?php echo $idArchivo ?>','<?php echo $idCarpeta ?>','<?php echo $nombreArchivo ?>','<?php echo $rutaArchivo ?>','<?php echo $extensionArchivo ?>')"
                         data-toggle="modal" data-target="#modalEditarArchivo">
                     </button>
-                    <button type="button" class="btn btn-danger  fas fa-trash-alt"
+                    <button type="button" id="Eliminar-<?php echo $nombreArchivo?>" class="btn btn-danger  fas fa-trash-alt"
                         onclick="eliminarArchivo('<?php echo $rutaArchivo ?>','<?php echo $idArchivo ?>','<?php echo $rutaImgVideo ?>')">
                     </button>
                 </div>
