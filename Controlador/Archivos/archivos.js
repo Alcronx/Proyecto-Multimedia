@@ -1,11 +1,11 @@
 $(document).ready(function () { //Este javascript se ejecuta cuando el documento Cargo
     $('#listadoArchivos').load("../ListaArchivos/cargarArchivos.php"); //Carga las Carpetas en el div listadoCarpetass
-        $('#btnActualizarArchivo').click(function () {
-            editarArchivo();
-        });
+    $('#btnActualizarArchivo').click(function () {
+        editarArchivo();
+    });
 });
 
-function eliminarArchivo(rutaArchivo,idArchivo,rutaImgVideo){
+function eliminarArchivo(rutaArchivo, idArchivo, rutaImgVideo) {
     Swal.fire({
         title: '¿Esta seguro de eliminar Archivo?',
         text: "Una vez eliminada no podra recuperarlo",
@@ -19,11 +19,11 @@ function eliminarArchivo(rutaArchivo,idArchivo,rutaImgVideo){
         if (result.isConfirmed) {
             $.ajax({
                 type: "POST",
-                data: {'rutaArchivo':rutaArchivo,'idArchivo':idArchivo,'rutaImgVideo':rutaImgVideo},
+                data: { 'rutaArchivo': rutaArchivo, 'idArchivo': idArchivo, 'rutaImgVideo': rutaImgVideo },
                 url: "../../Controlador/Archivos/EliminarArchivos.php",
                 success: function (respuesta) {
                     $('#listadoArchivos').load("../ListaArchivos/cargarArchivos.php");
-                    respuesta = respuesta.trim();                  
+                    respuesta = respuesta.trim();
                     if (respuesta == 1) {
                         $('#tablaGestorArchivos').load("../Vistas/Gestor/tablaGestor.php");
                         Swal.fire(
@@ -40,9 +40,9 @@ function eliminarArchivo(rutaArchivo,idArchivo,rutaImgVideo){
     })
 }
 
-function obtenerDatosArchivo(idArchivo, idCarpeta,nombreArchivo,rutaArchivo,extensionArchivo) {
+function obtenerDatosArchivo(idArchivo, idCarpeta, nombreArchivo, rutaArchivo, extensionArchivo) {
 
-    if (idCarpeta == "" || nombreArchivo == "" || idArchivo == "" || rutaArchivo =="" ||extensionArchivo=="") {
+    if (idCarpeta == "" || nombreArchivo == "" || idArchivo == "" || rutaArchivo == "" || extensionArchivo == "") {
         Swal.fire("Error", "Ha ocurrido un error intentelo denuevo", "error");
         return false;
     }
@@ -52,7 +52,7 @@ function obtenerDatosArchivo(idArchivo, idCarpeta,nombreArchivo,rutaArchivo,exte
         $('#nuevoNombre').val(nombreArchivo);
         $('#rutaArchivo').val(rutaArchivo);
         $('#extensionArchivo').val(extensionArchivo);
-        
+
     }
 
 
@@ -95,24 +95,24 @@ function editarArchivo() {
 
 }
 
-function Previsualizacion(extensionArchivo,rutaArchivo,nombreArchivo,idBotonPreview){
+function Previsualizacion(extensionArchivo, rutaArchivo, nombreArchivo, idBotonPreview) {
     //Funcion para Cargar Preview de Video, se dirige a cargarPreview.php
     $.ajax({
         type: "POST",
-        data: {'extensionArchivo':extensionArchivo,'rutaArchivo':rutaArchivo,'nombreArchivo':nombreArchivo,'idBotonPreview':idBotonPreview},
+        data: { 'extensionArchivo': extensionArchivo, 'rutaArchivo': rutaArchivo, 'nombreArchivo': nombreArchivo, 'idBotonPreview': idBotonPreview },
         url: "../../Controlador/Archivos/cargarPreview.php",
         success: function (respuesta) {
-           $('#contenedor-Interior-Body').html(respuesta);
+            $('#contenedor-Interior-Body').html(respuesta);
         }
     });
 }
 
-function btnAnterior(btnAnterior){
+function btnAnterior(btnAnterior) {
     $('#modalPrevisualizacion').modal('hide');
     document.getElementById(btnAnterior).click();
 }
 
-function btnSiguente(btnSiguente){
+function btnSiguente(btnSiguente) {
     $('#modalPrevisualizacion').modal('hide');
     document.getElementById(btnSiguente).click();
 }
@@ -120,22 +120,35 @@ function btnSiguente(btnSiguente){
 
 $('#modalPrevisualizacion').on('hidden.bs.modal', function (e) {
     $('#contenedor-Interior-Body').html("");
-  })
-
+})
 
 //EventoParaPresionar Teclas
-
 window.addEventListener("keydown", detectorDeTeclas, false);
-
-function detectorDeTeclas(key){
-    var modal = $('#modalPrevisualizacion').hasClass('show'); 
-    if(key.keyCode=="39" && modal){
-        document.getElementById("BtnAnterior").click();
+function detectorDeTeclas(key) {
+    var modal = $("#modalPrevisualizacion").hasClass("show");
+    if (key.keyCode == "39" && modal) {
+        document.getElementById("BtnAnterior").click();     
     }
-    if(key.keyCode=="37" && modal){
-        document.getElementById("BtnSiguente").click();
+    if (key.keyCode == "37" && modal) {
+        document.getElementById("BtnSiguente").click(); 
+    }
+    if (key.keyCode == "13" && modal) {
+        openFullscreen()
     }
 }
+
+function openFullscreen() {
+    var elem = document.getElementById("VideoPrevisualizacionId");
+    if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+    }
+}
+
+
 
 
 

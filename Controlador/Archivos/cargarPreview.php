@@ -28,9 +28,9 @@ try {
         case '.ogg':
         case '.webm':
         case '.mkv':
-            $etiquetaMultimedia = '<video class="bordePrevisualizacion videoPrevisualizacion" autoplay controls> <source src="' . $ruta . '" type="video/' . $tipo . '">
+            $etiquetaMultimedia = '<video id="VideoPrevisualizacionId" class="bordePrevisualizacion videoPrevisualizacion" autoplay controls> <source src="' . $ruta . '" type="video/' . $tipo . '">
                                             Tu buscador no soporta este formato de video
-                                            </video>';
+                                    </video>';
             break;
         case '.png':
         case '.jpg':
